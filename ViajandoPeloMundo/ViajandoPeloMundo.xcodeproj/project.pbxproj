@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		C6F43B60251946B1001EFF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F43B5F251946B1001EFF24 /* AppDelegate.swift */; };
 		C6F43B62251946B1001EFF24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F43B61251946B1001EFF24 /* SceneDelegate.swift */; };
-		C6F43B64251946B1001EFF24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F43B63251946B1001EFF24 /* ViewController.swift */; };
 		C6F43B67251946B1001EFF24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6F43B65251946B1001EFF24 /* Main.storyboard */; };
 		C6F43B69251946B4001EFF24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6F43B68251946B4001EFF24 /* Assets.xcassets */; };
 		C6F43B6C251946B4001EFF24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6F43B6A251946B4001EFF24 /* LaunchScreen.storyboard */; };
+		C6F43B7825194C9B001EFF24 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F43B7725194C9B001EFF24 /* PlacesTableViewController.swift */; };
+		C6F43B7E25194D89001EFF24 /* PlaceFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F43B7D25194D89001EFF24 /* PlaceFinderViewController.swift */; };
+		C6F43B8125196F5A001EFF24 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F43B8025196F5A001EFF24 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C6F43B5C251946B1001EFF24 /* ViajandoPeloMundo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViajandoPeloMundo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F43B5F251946B1001EFF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6F43B61251946B1001EFF24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C6F43B63251946B1001EFF24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C6F43B66251946B1001EFF24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C6F43B68251946B4001EFF24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6F43B6B251946B4001EFF24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6F43B6D251946B4001EFF24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6F43B7725194C9B001EFF24 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
+		C6F43B7D25194D89001EFF24 /* PlaceFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceFinderViewController.swift; sourceTree = "<group>"; };
+		C6F43B8025196F5A001EFF24 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,33 @@
 		C6F43B5E251946B1001EFF24 /* ViajandoPeloMundo */ = {
 			isa = PBXGroup;
 			children = (
+				C6F43B6D251946B4001EFF24 /* Info.plist */,
 				C6F43B5F251946B1001EFF24 /* AppDelegate.swift */,
 				C6F43B61251946B1001EFF24 /* SceneDelegate.swift */,
-				C6F43B63251946B1001EFF24 /* ViewController.swift */,
-				C6F43B65251946B1001EFF24 /* Main.storyboard */,
 				C6F43B68251946B4001EFF24 /* Assets.xcassets */,
-				C6F43B6A251946B4001EFF24 /* LaunchScreen.storyboard */,
-				C6F43B6D251946B4001EFF24 /* Info.plist */,
+				C6F43B7625194C7A001EFF24 /* Views */,
+				C6F43B7B25194CA2001EFF24 /* Controllers */,
 			);
 			path = ViajandoPeloMundo;
+			sourceTree = "<group>";
+		};
+		C6F43B7625194C7A001EFF24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C6F43B6A251946B4001EFF24 /* LaunchScreen.storyboard */,
+				C6F43B65251946B1001EFF24 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C6F43B7B25194CA2001EFF24 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6F43B7725194C9B001EFF24 /* PlacesTableViewController.swift */,
+				C6F43B7D25194D89001EFF24 /* PlaceFinderViewController.swift */,
+				C6F43B8025196F5A001EFF24 /* MapViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +159,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6F43B64251946B1001EFF24 /* ViewController.swift in Sources */,
 				C6F43B60251946B1001EFF24 /* AppDelegate.swift in Sources */,
 				C6F43B62251946B1001EFF24 /* SceneDelegate.swift in Sources */,
+				C6F43B7E25194D89001EFF24 /* PlaceFinderViewController.swift in Sources */,
+				C6F43B8125196F5A001EFF24 /* MapViewController.swift in Sources */,
+				C6F43B7825194C9B001EFF24 /* PlacesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
