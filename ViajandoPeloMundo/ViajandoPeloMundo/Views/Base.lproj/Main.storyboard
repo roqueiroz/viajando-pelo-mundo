@@ -50,7 +50,7 @@
                             <outlet property="delegate" destination="sOM-4y-vps" id="gAw-oY-5yR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Viajando Pelo Mundo" largeTitleDisplayMode="always" id="Bbr-1d-F1K">
+                    <navigationItem key="navigationItem" title="Viajando Pelo Mundo" largeTitleDisplayMode="never" id="Bbr-1d-F1K">
                         <barButtonItem key="backBarButtonItem" title=" " id="EYh-RP-EJi"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2Pr-co-guM">
                             <connections>
@@ -75,11 +75,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5M-6x-wKB">
-                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" name="main"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="PPz-xU-wqa">
-                                <rect key="frame" x="10" y="150" width="394" height="702"/>
+                                <rect key="frame" x="10" y="98" width="394" height="754"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="O que você deseja buscar?" translatesAutoresizingMaskIntoConstraints="NO" id="Jdr-w3-MRk">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="44"/>
@@ -90,10 +90,10 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iIF-GX-DKf">
-                                        <rect key="frame" x="0.0" y="50" width="394" height="486"/>
+                                        <rect key="frame" x="0.0" y="50" width="394" height="538"/>
                                     </mapView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ii-Kc-UaD">
-                                        <rect key="frame" x="0.0" y="542" width="394" height="160"/>
+                                        <rect key="frame" x="0.0" y="594" width="394" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YdR-h1-wEN">
                                                 <rect key="frame" x="12" y="12" width="370" height="26.5"/>

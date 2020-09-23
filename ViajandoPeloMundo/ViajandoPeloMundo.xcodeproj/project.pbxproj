@@ -15,6 +15,7 @@
 		C6F43B7825194C9B001EFF24 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F43B7725194C9B001EFF24 /* PlacesTableViewController.swift */; };
 		C6F43B7E25194D89001EFF24 /* PlaceFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F43B7D25194D89001EFF24 /* PlaceFinderViewController.swift */; };
 		C6F43B8125196F5A001EFF24 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F43B8025196F5A001EFF24 /* MapViewController.swift */; };
+		C6F43B84251A1D33001EFF24 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F43B83251A1D33001EFF24 /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C6F43B7725194C9B001EFF24 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
 		C6F43B7D25194D89001EFF24 /* PlaceFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceFinderViewController.swift; sourceTree = "<group>"; };
 		C6F43B8025196F5A001EFF24 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		C6F43B83251A1D33001EFF24 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				C6F43B68251946B4001EFF24 /* Assets.xcassets */,
 				C6F43B7625194C7A001EFF24 /* Views */,
 				C6F43B7B25194CA2001EFF24 /* Controllers */,
+				C6F43B86251A1D3A001EFF24 /* Models */,
 			);
 			path = ViajandoPeloMundo;
 			sourceTree = "<group>";
@@ -87,6 +90,14 @@
 				C6F43B8025196F5A001EFF24 /* MapViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C6F43B86251A1D3A001EFF24 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C6F43B83251A1D33001EFF24 /* Place.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 				C6F43B60251946B1001EFF24 /* AppDelegate.swift in Sources */,
 				C6F43B62251946B1001EFF24 /* SceneDelegate.swift in Sources */,
 				C6F43B7E25194D89001EFF24 /* PlaceFinderViewController.swift in Sources */,
+				C6F43B84251A1D33001EFF24 /* Place.swift in Sources */,
 				C6F43B8125196F5A001EFF24 /* MapViewController.swift in Sources */,
 				C6F43B7825194C9B001EFF24 /* PlacesTableViewController.swift in Sources */,
 			);
