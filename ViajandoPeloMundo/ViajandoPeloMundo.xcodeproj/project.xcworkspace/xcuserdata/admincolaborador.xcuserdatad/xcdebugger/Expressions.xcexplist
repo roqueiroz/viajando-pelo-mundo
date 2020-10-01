@@ -10,5 +10,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "PlacesTableViewController.loadPlaces():PlacesTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "places">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

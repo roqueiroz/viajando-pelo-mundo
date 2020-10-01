@@ -8,6 +8,10 @@
 import UIKit
 import MapKit
 
+protocol PlaceFinderDelegate: class {
+    func addPlace(_ place: Place)
+}
+
 class PlaceFinderViewController: UIViewController {
     
     enum PlaceFinderMessageType {
@@ -22,10 +26,15 @@ class PlaceFinderViewController: UIViewController {
     @IBOutlet weak var viewLoading: UIView!
     
     var place: Place!
+    weak var delegate: PlaceFinderDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(getLocation(_:)))
+        gesture.minimumPressDuration = 2.0
         
+        mapView.addGestureRecognizer(gesture)
     }
     
     //MARK: Functions
@@ -34,6 +43,35 @@ class PlaceFinderViewController: UIViewController {
         viewLoading.isHidden = !show
         
         show ? aiLoading.startAnimating() : aiLoading.stopAnimating()
+        
+    }
+    
+    @objc private func getLocation(_ gesture: UILongPressGestureRecognizer) {
+        
+        if gesture.state == .began {
+            
+            load(show: true)
+            
+            let point = gesture.location(in: mapView)
+            let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
+            let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            
+            CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+                
+                if error == nil {
+                    
+                    if !self.savePlace(with: placemarks?.first) {
+                        self.showMessage(type: .error("Ops..Algo deu erro!"))
+                    }
+                    
+                } else {
+                    self.showMessage(type: .error("Local não encontrado!"))
+                }
+                
+                self.load(show: false)
+                
+            }
+        }
         
     }
     
@@ -52,11 +90,11 @@ class PlaceFinderViewController: UIViewController {
             longitude: coordinate.longitude,
             address: Place.getFormattedAddress(with: placeMark))
         
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000)
         
         mapView.setRegion(region, animated: true)
         
-        //self.showMessage(type: .confirmation(place.name))
+        self.showMessage(type: .confirmation(place.name))
         
         return true
     }
@@ -86,7 +124,10 @@ class PlaceFinderViewController: UIViewController {
         if hasConfirmation {
             
             let confirmAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-                print("Ok!!!")
+               
+                self.delegate?.addPlace(self.place)
+                self.dismiss(animated: true, completion: nil)
+                
             }
             
             alert.addAction(confirmAction)
