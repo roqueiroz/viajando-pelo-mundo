@@ -28,6 +28,7 @@ class MapViewController: UIViewController {
     var poiList: [MKAnnotation] = []
     lazy var locationManager = CLLocationManager()
     var btnUserLocation: MKUserTrackingButton!
+    var selectedAnnotation: PlaceAnnotation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,15 @@ class MapViewController: UIViewController {
     }
     
     //MARK: Functions
+    private func showInfo() {
+            
+        lblName.text = selectedAnnotation!.title
+        lblAddress.text = selectedAnnotation!.address
+        
+        vwInfo.isHidden = false
+        
+    }
+    
     private func configLocationButton() {
     
         btnUserLocation = MKUserTrackingButton(mapView: mapView)
@@ -66,6 +76,7 @@ class MapViewController: UIViewController {
         
         searchBar.isHidden = true
         searchBar.searchTextField.backgroundColor = UIColor.white
+        searchBar.searchTextField.textColor = UIColor(named: "main")
         
         vwInfo.isHidden = true
         
@@ -80,20 +91,23 @@ class MapViewController: UIViewController {
         
         if CLLocationManager.locationServicesEnabled() {
             
-            switch CLLocationManager.authorizationStatus() {
-
+            switch locationManager.authorizationStatus  {
+            
             case .authorizedAlways, .authorizedWhenInUse:
                 mapView.addSubview(btnUserLocation)
-
+                
             case .denied:
                 showMessage(type: .authorizationWarning)
-
+                
             case .notDetermined:
                 locationManager.requestWhenInUseAuthorization()
-
+                
             case .restricted:
                 break
-
+                
+            default:
+                break
+                
             }
             
         }
@@ -119,39 +133,31 @@ class MapViewController: UIViewController {
     
     private func showMessage(type: MapMessageType) {
         
-        let title: String, message: String
-        var hasConfirmation: Bool = false
+        let title = type == .authorizationWarning ? "Aviso": "Erro"
+        let message = type == .authorizationWarning ? "Você precisa permitar o uso da localização na tela de Configurações." : "Não foi possivel encontrar a rota."
         
-//        switch type {
-//        case .confirmation(let name):
-//            title = ""
-//            message = "Deseja adicionar \(name)"
-//            hasConfirmation = true
-//
-//        case .error(let errorMessage):
-//            title = "Erro"
-//            message = errorMessage
-//
-//        }
-//
-//        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
-//
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//        alert.addAction(cancelAction)
-//
-//        if hasConfirmation {
-//
-//            let confirmAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-//
-//                self.delegate?.addPlace(self.place)
-//                self.dismiss(animated: true, completion: nil)
-//
-//            }
-//
-//            alert.addAction(confirmAction)
-//        }
-//
-//        present(alert, animated: true, completion: nil)
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(cancelAction)
+        
+        if type == .authorizationWarning {
+            
+            let confirmAction = UIAlertAction(title: "Configurações", style: .default, handler: {
+                
+                (action) in
+                
+                if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                }
+                
+            })
+            
+            alert.addAction(confirmAction)
+            
+        }
+        
+        present(alert, animated: true, completion: nil)
         
     }
     
@@ -172,31 +178,42 @@ class MapViewController: UIViewController {
 extension MapViewController: CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-
+        
         let status = manager.authorizationStatus
-
+        
         switch status {
         
-        case .notDetermined:
+        case .notDetermined, .denied:
             self.requestUserLocationAuthorization()
-
+            
         case .authorizedAlways, .authorizedWhenInUse:
-
+            
             self.mapView.showsUserLocation = true
             self.mapView.addSubview(btnUserLocation)
-
+            
             locationManager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: "wantAccurateLocation", completion: { [self]
                 error in
-
+                
                 locationManager.startUpdatingLocation()
             })
-
+            
         default:
             break
         }
-
-
-
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let camera = MKMapCamera()
+        camera.centerCoordinate = view.annotation!.coordinate
+        camera.pitch = 80
+        camera.altitude = 100
+        
+        mapView.setCamera(camera, animated: true)
+        
+        selectedAnnotation = (view.annotation as! PlaceAnnotation)
+        self.showInfo()
     }
     
 //    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
