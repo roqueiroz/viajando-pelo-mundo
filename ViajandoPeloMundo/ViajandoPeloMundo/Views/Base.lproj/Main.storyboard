@@ -76,13 +76,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="PPz-xU-wqa">
                                 <rect key="frame" x="10" y="98" width="394" height="754"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" placeholder="O que você deseja buscar?" translatesAutoresizingMaskIntoConstraints="NO" id="Jdr-w3-MRk">
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="O que você deseja buscar?" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdr-w3-MRk">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8TZ-zG-K3n"/>
                                         </constraints>
-                                        <color key="barTintColor" name="main"/>
+                                        <color key="tintColor" name="main"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="cjV-k0-lvb" id="7YT-xB-91v"/>
+                                        </connections>
                                     </searchBar>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iIF-GX-DKf">
                                         <rect key="frame" x="0.0" y="50" width="394" height="538"/>
@@ -128,6 +131,10 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aff-dJ-GGc">
+                                <rect key="frame" x="188.5" y="398.5" width="37" height="37"/>
+                                <color key="color" name="main"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cTI-m6-oQ1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -139,6 +146,8 @@
                             <constraint firstItem="G5M-6x-wKB" firstAttribute="leading" secondItem="Rpx-dj-1hL" secondAttribute="leading" id="VXF-bT-aVC"/>
                             <constraint firstAttribute="trailing" secondItem="G5M-6x-wKB" secondAttribute="trailing" id="Zci-Xe-drZ"/>
                             <constraint firstItem="cTI-m6-oQ1" firstAttribute="bottom" secondItem="PPz-xU-wqa" secondAttribute="bottom" constant="10" id="cJ8-AK-mtn"/>
+                            <constraint firstItem="aff-dJ-GGc" firstAttribute="centerY" secondItem="iIF-GX-DKf" secondAttribute="centerY" id="ckC-hU-LwV"/>
+                            <constraint firstItem="aff-dJ-GGc" firstAttribute="centerX" secondItem="iIF-GX-DKf" secondAttribute="centerX" id="i2B-dx-x3n"/>
                             <constraint firstItem="PPz-xU-wqa" firstAttribute="top" secondItem="cTI-m6-oQ1" secondAttribute="top" constant="10" id="lPg-LW-uxB"/>
                         </constraints>
                     </view>
@@ -152,6 +161,7 @@
                     <connections>
                         <outlet property="lblAddress" destination="0TL-Oo-ZR1" id="1gx-yV-vCH"/>
                         <outlet property="lblName" destination="YdR-h1-wEN" id="7e6-HH-7jT"/>
+                        <outlet property="loading" destination="aff-dJ-GGc" id="fFf-Ue-Etz"/>
                         <outlet property="mapView" destination="iIF-GX-DKf" id="F48-q6-ecE"/>
                         <outlet property="searchBar" destination="Jdr-w3-MRk" id="xRc-3V-QdZ"/>
                         <outlet property="vwInfo" destination="1Ii-Kc-UaD" id="Tsj-No-RmS"/>

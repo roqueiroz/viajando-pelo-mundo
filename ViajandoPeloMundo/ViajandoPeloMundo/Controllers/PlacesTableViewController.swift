@@ -76,7 +76,7 @@ class PlacesTableViewController: UITableViewController {
     @objc func showAll() {
         performSegue(withIdentifier: "mapSegue", sender: nil)
     }
-    
+        
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
